@@ -1,0 +1,31 @@
+name: Chill deploy
+
+on:
+  push:
+    tags:
+      - chill-v*
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ^1.18
+      - name: Fill kubeconfig
+        run: |
+          mkdir ~/.kube
+          printf "%s" "$CHILL_KUBECONFIG" > ~/.kube/config
+        env:
+          CHILL_KUBECONFIG: ${{ secrets.CHILL_KUBECONFIG }}
+      - name: Install chill-cli
+        run: go install github.com/chill-cloud/chill-cli@latest
+      - name: Build image
+        run: chill-cli build --verbose
+      - name: Push image
+        run: chill-cli push --verbose
+      - name: Deploy image
+        run: chill-cli deploy --force-frozen --verbose

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message FatherHelloRequest {
+
+}
+
+message FatherHelloResponse {
+    string response = 1;
+}
+
+service FatherService {
+    rpc SayHello(FatherHelloRequest) returns (FatherHelloResponse);
+}
