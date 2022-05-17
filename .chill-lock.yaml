@@ -3,7 +3,9 @@
 
 service:
     name: father-service
-    currentVersion: v1.0.0
-    stage: major
+    registry: ghcr.io/chill-cloud/father-service
+    baseVersion: v1.0.0
+    currentVersion: v1.1.0
+    stage: production
     integration: dart
     dependencies: {}

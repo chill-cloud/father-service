@@ -1,6 +1,6 @@
 service:
     name: father-service
     registry: ghcr.io/chill-cloud/father-service
-    stage: development
+    stage: production
     integration: dart
     dependencies: {}
