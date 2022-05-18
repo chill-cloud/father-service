@@ -3,4 +3,7 @@ service:
     registry: ghcr.io/chill-cloud/father-service
     stage: production
     integration: dart
-    dependencies: {}
+    dependencies:
+        son-service:
+            remote: github.com/chill-cloud/son-service
+            version: v1
