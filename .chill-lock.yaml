@@ -4,8 +4,8 @@
 service:
     name: father-service
     registry: ghcr.io/chill-cloud/father-service
-    baseVersion: v1.1.0
-    currentVersion: v1.2.0
+    baseVersion: v1.2.0
+    currentVersion: v1.3.0
     stage: production
     integration: dart
     dependencies:

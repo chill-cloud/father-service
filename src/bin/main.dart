@@ -12,6 +12,9 @@ class FatherService extends FatherServiceBase {
     _client = SonServiceClient(GrpcOrGrpcWebClientChannel.grpc(
         Platform.environment["CHILL_SERVICE_SON_SERVICE"]!,
         port: 80,
+        options: const ChannelOptions(
+          credentials: ChannelCredentials.insecure(),
+        )
     ));
   }
 
